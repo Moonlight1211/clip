@@ -1,4 +1,5 @@
 from getopt import GetoptError, gnu_getopt
+import json
 import os
 import sys
 import requests
@@ -46,6 +47,14 @@ def main(args):
         'hosting': 'Hosting/Colocated/Data Center',
     }
     response = get_api_data(args)
+    if len(args['output']) > 0:
+        output_path = args['output']
+        response_json = json.dumps(response, indent=4)
+        with open(output_path, 'w') as file:
+            file.write(response_json)
+
+        sys.exit(0)
+
     ip = response['query']
     response.pop('query')
     print(f'    IP Geolocation data for {ip}')
@@ -156,10 +165,13 @@ def parse_args(argv):
             sys.exit(0)
 
         elif opt in ('-o', '--output'):
-            if os.path.isdir(arg):
-                args['output'] = os.path.abspath(arg)
+            if os.path.isdir(os.path.dirname(os.path.abspath(arg))):
+                if arg[-5:] != ".json":
+                    args['output'] = f"{os.path.abspath(arg)}.json"
+                else:
+                    args['output'] = os.path.abspath(arg)
             else:
-                print(f'"{arg}" is not a valid file location. Please try again.\n')
+                print(f'"{arg}" is not a valid file location. Please try again.')
                 sys.exit(1)
 
             # -f --fields handling
@@ -175,7 +187,7 @@ def parse_args(argv):
             if os.path.isfile(arg):
                 args['fields'] = generate_csv_numeric('', arg)
             else:
-                print(f'"{arg}" is not a valid file. Please try again.\n')
+                print(f'"{arg}" is not a valid file. Please try again.')
                 sys.exit(1)
 
     return args
