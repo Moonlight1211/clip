@@ -141,14 +141,15 @@ def parse_args(argv):
     args = {
         # IP address to trace
         'ip': '',
-        # Output file location
+        # Output file (if any)
         'output': '',
         # Fields to request
         'fields': 1632249,
     }
 
     try:
-        opts, _args = gnu_getopt(argv, 'o:hAf:F:', ['output=', 'fields=', 'field-file='])
+        opts, _args = gnu_getopt(argv, 'o:hAf:F:', ['output=', 'fields=',
+                                                    'field-file='])
     except GetoptError:
         print_help_text()
         sys.exit(1)
@@ -171,7 +172,7 @@ def parse_args(argv):
                 else:
                     args['output'] = os.path.abspath(arg)
             else:
-                print(f'"{arg}" is not a valid file location. Please try again.')
+                print(f'"{arg}" is not a valid file path. Please try again.')
                 sys.exit(1)
 
             # -f --fields handling
