@@ -1,1 +1,7 @@
+# Directories to ignore
 lib/venv/
+build/
+
+# Files to ignore
+clip
+*.spec
