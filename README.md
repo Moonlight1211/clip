@@ -1,6 +1,59 @@
 # CLIp
 This project was inspired by the discontinued maintenance for [IP-Tracer](https://github.com/rajkumardusad/IP-Tracer). It aims to be a more feature-rich re-imagining of the original IP-Tracer in Python instead of PHP.
 
+Example using the [Google Public DNS](https://dns.google) IP address:
+```sh
+$ clip 8.8.8.8
+    IP Geolocation data for 8.8.8.8
+        Continent: North America
+        Country: United States
+        Province: Virginia
+        City: Ashburn
+        Zip Code: 20149
+        Latitude: 39.03
+        Longitude: -77.5
+        Timezone: America/New_York
+        Interner Service Provider: Google LLC
+        Organization Name: Google Public DNS    
+```
+
+### Usage
+Clip follows GNU getopt syntax, meaning options will work in any order, even after an argument. You can give clip a comma-separated list of the data fields about the IP address to display, listed in full [here](https://ip-api.com/docs/api:json):
+```sh
+$ clip 8.8.8.8 --fields timezone,continent,isp
+    IP Geolocation data for 8.8.8.8
+        Continent: North America
+        Timezone: America/New_York
+        Interner Service Provider: Google LLC
+```
+
+Or read them straight from a CSV file:
+```sh
+$ clip 8.8.8.8 -F fields.csv
+    IP Geolocation data for 8.8.8.8
+        Continent: North America
+        Country: United States
+        Interner Service Provider: Google LLC
+        Organization Name: Google Public DNS    
+```
+
+You can also output the API response directly to a JSON file like so:
+```sh
+$ clip 8.8.8.8 -f timezone,continent,isp -o response
+$ cat response.json
+{
+    "continent": "North America",
+    "timezone": "America/New_York",
+    "isp": "Google LLC",
+    "query": "8.8.8.8"
+}
+```
+
+More usage information is available with the `--help` option:
+```sh
+clip --help
+```
+
 ### Installation
 Make sure `git`, `python3`, and `make` are installed on your system. Currently, this means Windows is not supported, but there are plans to support it eventually!
 
