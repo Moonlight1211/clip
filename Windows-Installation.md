@@ -5,7 +5,7 @@ Open a command prompt window (Windows Key + R then type `cmd`) and use `cd` to n
 cd Documents
 ```
 
-Before prcoeeding, make sure you have `git`, and `python` installed. If not, install them using the `winget` utility (You may need to install `winget` from the Microsoft Store):
+Before proceeding, make sure you have `git`, and `python` installed. If not, make sure you have the [`winget`](https://learn.microsoft.com/en-us/windows/package-manager/) utility from the Microsoft Store, and install `git` and `python` like so:
 ```sh
 winget install git.git
 ```
@@ -24,7 +24,7 @@ win-build
 ```
 Once the script says `Done!`, the program has been built and is ready to be used immediately!
 
-Unfortunately, there are no further installation steps to take; Windows comes with another utility called `clip` pre-installed that will override calls to our `CLIp`. Unless you want to delete that program/remove it from your `PATH` variable, your best bet for using `CLIp` is to either move the binary (`clip.exe`) to where you need it and then calling it directly:
+Windows comes with another utility called `clip` pre-installed that will override calls to our `CLIp`. Unless you want to delete that program/remove it from your `PATH` variable, your best bet for using `CLIp` is to either move the binary (`clip.exe`) to where you need it and then calling it directly:
 ```sh
 .\clip.exe -f country,timezone 8.8.8.8
 ```
