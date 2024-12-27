@@ -55,7 +55,8 @@ clip --help
 ```
 
 ### Installation
-**For installing on Windows, please see [this document](./Windows-Installation.md)**
+> [!NOTE]
+> For installing on Windows, please see [this document](./Windows-Installation.md)
 
 The following installation instructions are for Linux specifically, but are most likely applicable to other POSIX-compatible systems like macOS or *BSD's.
 
@@ -81,11 +82,11 @@ That's it! As long as `/usr/local/bin` is in your `$PATH` variable, (which you c
 clip -F ./lib/fields.csv example.ip.address
 ```
 
-#### Installation quirks
-If you need the `clip` binary to be installed elsewhere, just change the `BIN_DIR` variable in the Makefile to your preferred bin location.
-```sh
-BIN_DIR = /usr/bin
-```
+> [!NOTE]
+> If you need the `clip` binary to be installed elsewhere, just change the `BIN_DIR` variable in the Makefile to your preferred bin location.
+> ```sh
+> BIN_DIR = /usr/bin
+> ```
 
 ### Disclaimer
 Do not use this program in any way for illicit purposes such as doxxing or harassment.
