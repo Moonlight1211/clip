@@ -55,7 +55,11 @@ clip --help
 ```
 
 ### Installation
-Make sure `git`, `python3`, and `make` are installed on your system. Currently, this means Windows is not supported, but there are plans to support it eventually!
+**For installing on Windows, please see [this document](./Windows-Installation.md)**
+
+The following installation instructions are for Linux specifically, but are most likely applicable to other POSIX-compatible systems like macOS or *BSD's.
+
+Make sure `git`, `python3`, and `make` are installed on your system (`gmake` for BSD systems)
 
 Navigate to where you want to keep the files for clip and run the following command:
 ```bash
@@ -82,7 +86,6 @@ If you need the `clip` binary to be installed elsewhere, just change the `BIN_DI
 ```sh
 BIN_DIR = /usr/bin
 ```
-
 
 ### Disclaimer
 Do not use this program in any way for illicit purposes such as doxxing or harassment.
